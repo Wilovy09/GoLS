@@ -10,19 +10,7 @@ We deserve a better and faster LS command.
 
 ## Preview
 
-```sh
-$ ls     
-📁.
-├──📄README.md
-├──📄go.mod
-└──📄main.go
-$ ls -a
-📁.
-├──📁.git
-├──📄README.md
-├──📄go.mod
-└──📄main.go
-```
+![GoLS](./images/preview.png)
 
 ## Installation
 
