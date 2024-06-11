@@ -62,7 +62,7 @@ func main() {
 
 	path := "."
 	showAll := flag.Bool("a", false, "Show all files and folders, including those beginning with '.'.")
-	maxDepth := flag.Int("depth", -1, "Maximum depth for folder traversal. Use -1 for unlimited depth.")
+	maxDepth := flag.Int("depth", 0, "Maximum depth for folder traversal. Use -1 for unlimited depth.")
 
 	flag.Parse()
 
