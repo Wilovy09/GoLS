@@ -5,6 +5,26 @@ A better LS command.
 > [!NOTE]
 > PR is accepted to improve the code
 
+## Preview
+
+```sh
+alias ls='~/gols'
+```
+
+```sh
+$ ls     
+📁.
+├──📄README.md
+├──📄go.mod
+└──📄main.go
+$ ls -a
+📁.
+├──📁.git
+├──📄README.md
+├──📄go.mod
+└──📄main.go
+```
+
 ## Installation
 
 Clone the repository and compile the code.
