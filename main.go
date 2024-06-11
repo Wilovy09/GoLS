@@ -70,6 +70,6 @@ func main() {
 		path = flag.Arg(0)
 	}
 
-	fmt.Printf("📁%s\n", path) // Print the name of the root directory
+	fmt.Printf("📁%s\n", path)
 	ReadFolder(path, *showAll, *maxDepth)
 }
