@@ -10,7 +10,7 @@ We deserve a better and faster LS command.
 
 ## Preview
 
-![GoLS](./images/preview.png)
+![GoLS](./assets/previews/preview-GoLS-v1.gif)
 
 ## Installation
 
