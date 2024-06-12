@@ -32,6 +32,14 @@ alias ls='~/go/bin/GoLS'
 
 And you're done.
 
+## Download de binary
+
+In the [release](https://github.com/Wilovy09/GoLS/releases/tag/release) section you can find the binary file used to run GoLS.
+
+Thins binary will be moved to yours root directory.
+
+Create an alias in your `bashrc` or `.zshrc` file.
+
 ### Compile
 
 Clone the repository and compile the code.
