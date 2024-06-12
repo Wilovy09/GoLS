@@ -9,10 +9,10 @@ import (
 )
 
 func ReadFolder(path string, showAll bool, maxDepth int) {
-	readFolderRecursive(path, showAll, 0, maxDepth)
+	readFolderRecursive(path, showAll, 0, maxDepth, "")
 }
 
-func readFolderRecursive(path string, showAll bool, depth, maxDepth int) {
+func readFolderRecursive(path string, showAll bool, depth, maxDepth int, prefix string) {
 	if maxDepth >= 0 && depth > maxDepth {
 		return
 	}
@@ -24,34 +24,43 @@ func readFolderRecursive(path string, showAll bool, depth, maxDepth int) {
 	}
 
 	for i, f := range files {
-		var prefix string
-		if i == len(files)-1 {
-			prefix = "└──"
-		} else {
-			prefix = "├──"
-		}
 		if !showAll && strings.HasPrefix(f.Name(), ".") {
 			continue
 		}
+
 		var fileType string
 		if f.IsDir() {
 			fileType = "📁"
 		} else {
 			fileType = "📄"
 		}
-		fmt.Printf("%s%s%s\n", getIndentation(depth)+prefix, fileType, f.Name())
-		if f.IsDir() {
-			subdir := filepath.Join(path, f.Name())
-			readFolderRecursive(subdir, showAll, depth+1, maxDepth)
+
+		if depth == 0 {
+			if i == len(files)-1 {
+				fmt.Printf("%s└──%s%s\n", prefix, fileType, f.Name())
+				if f.IsDir() {
+					readFolderRecursive(filepath.Join(path, f.Name()), showAll, depth+1, maxDepth, prefix+"   ")
+				}
+			} else {
+				fmt.Printf("%s├──%s%s\n", prefix, fileType, f.Name())
+				if f.IsDir() {
+					readFolderRecursive(filepath.Join(path, f.Name()), showAll, depth+1, maxDepth, prefix+"│  ")
+				}
+			}
+		} else {
+			if i == len(files)-1 {
+				fmt.Printf("%s└──%s%s\n", prefix, fileType, f.Name())
+				if f.IsDir() {
+					readFolderRecursive(filepath.Join(path, f.Name()), showAll, depth+1, maxDepth, prefix+"   ")
+				}
+			} else {
+				fmt.Printf("%s├──%s%s\n", prefix, fileType, f.Name())
+				if f.IsDir() {
+					readFolderRecursive(filepath.Join(path, f.Name()), showAll, depth+1, maxDepth, prefix+"│  ")
+				}
+			}
 		}
 	}
-}
-
-func getIndentation(depth int) string {
-	if depth == 0 {
-		return ""
-	}
-	return strings.Repeat("│  ", depth-1) + "├──"
 }
 
 func main() {
