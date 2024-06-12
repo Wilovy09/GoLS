@@ -40,6 +40,13 @@ Thins binary will be moved to yours root directory.
 
 Create an alias in your `bashrc` or `.zshrc` file.
 
+```bash
+# [ GoLS better ls ]
+alias ls='~/GoLS'
+```
+
+And you're done.
+
 ### Compile
 
 Clone the repository and compile the code.
@@ -54,7 +61,7 @@ You need to create a `alias` in your `.bashrc` or `.zshrc` file.
 
 ```bash
 # [ gols better ls ]
-alias ls='~/gols'
+alias ls='~/GoLS'
 ```
 
 ## Flags
