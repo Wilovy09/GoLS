@@ -66,7 +66,10 @@ alias ls='~/GoLS'
 
 ## Flags
 
-| Flag   | Description                 | Values  | Default |
-|--------|-----------------------------|---------|-------- |
-| -a     | Show hidden files           | boolean | false   |
-| -depth | How deep the search will be | int     | 0       |
+| Flag     | Description                 | Values  | Default |
+|----------|-----------------------------|---------|-------- |
+| -a       | Show hidden files           | boolean | false   |
+| -depth   | How deep the search will be | int     | 0       |
+| -details | Show de file/dir details    | bollean | false   |
+| -tree    | Show the files in tree view | boolean | false   |
+| -emoji   | Show emojis in the view     | boolean | false   |
