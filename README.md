@@ -73,3 +73,5 @@ alias ls='~/GoLS'
 | -details | Show de file/dir details    | bollean | false   |
 | -tree    | Show the files in tree view | boolean | false   |
 | -emoji   | Show emojis in the view     | boolean | false   |
+| -d       | Show only directorys        | boolean | false   |
+| -f       | Show only files             | boolean | false    |

@@ -11,11 +11,11 @@ import (
 	"time"
 )
 
-func ReadFolder(showDetails bool, path string, showAll bool, maxDepth int, showEmojis bool) {
-	readFolderRecursive(showDetails, path, showAll, 0, maxDepth, "", showEmojis)
+func ReadFolder(showDetails bool, path string, showAll bool, maxDepth int, showEmojis bool, showOnlyFiles bool, showOnlyFolders bool) {
+	readFolderRecursive(showDetails, path, showAll, 0, maxDepth, "", showEmojis, showOnlyFiles, showOnlyFolders)
 }
 
-func readFolderRecursive(showDetails bool, path string, showAll bool, depth, maxDepth int, prefix string, showEmojis bool) {
+func readFolderRecursive(showDetails bool, path string, showAll bool, depth, maxDepth int, prefix string, showEmojis bool, showOnlyFiles bool, showOnlyFolders bool) {
 	if maxDepth >= 0 && depth > maxDepth {
 		return
 	}
@@ -38,45 +38,65 @@ func readFolderRecursive(showDetails bool, path string, showAll bool, depth, max
 			details = getDetails(filePath)
 		}
 
-		if f.IsDir() {
-			if showEmojis {
-				fileName = fmt.Sprintf("📁%s", fileName)
+		if showOnlyFolders{
+			if !f.IsDir(){
+				continue
 			} else {
-				fileName = fileName + "/"
+				if showEmojis {
+					fileName = fmt.Sprintf("📁%s", fileName)
+				} else {
+					fileName = fileName + "/"
+				}
 			}
-		} else if showEmojis {
-			fileName = fmt.Sprintf("📄%s", fileName)
+		} else if showOnlyFiles{
+			if f.IsDir(){
+				continue
+			} else {
+				if showEmojis {
+					fileName = fmt.Sprintf("📄%s", fileName)
+				}
+			}
+		} else {
+			if f.IsDir() {
+				if showEmojis {
+					fileName = fmt.Sprintf("📁%s", fileName)
+				} else {
+					fileName = fileName + "/"
+				}
+			} else if showEmojis {
+				fileName = fmt.Sprintf("📄%s", fileName)
+			}
 		}
 
 		if depth == 0 {
 			if i == len(files)-1 {
 				fmt.Printf("%s%s└──%s\n", details, prefix, fileName)
 				if f.IsDir() {
-					readFolderRecursive(showDetails, filePath, showAll, depth+1, maxDepth, prefix+"   ", showEmojis)
+					readFolderRecursive(showDetails, filePath, showAll, depth+1, maxDepth, prefix+"   ", showEmojis, showOnlyFiles, showOnlyFolders)
 				}
 			} else {
 				fmt.Printf("%s%s├──%s\n", details, prefix, fileName)
 				if f.IsDir() {
-					readFolderRecursive(showDetails, filePath, showAll, depth+1, maxDepth, prefix+"│  ", showEmojis)
+					readFolderRecursive(showDetails, filePath, showAll, depth+1, maxDepth, prefix+"│  ", showEmojis, showOnlyFiles, showOnlyFolders)
 				}
 			}
 		} else {
 			if i == len(files)-1 {
 				fmt.Printf("%s%s└──%s\n", details, prefix, fileName)
 				if f.IsDir() {
-					readFolderRecursive(showDetails, filePath, showAll, depth+1, maxDepth, prefix+"   ", showEmojis)
+					readFolderRecursive(showDetails, filePath, showAll, depth+1, maxDepth, prefix+"   ", showEmojis, showOnlyFiles, showOnlyFolders)
 				}
 			} else {
 				fmt.Printf("%s%s├──%s\n", details, prefix, fileName)
 				if f.IsDir() {
-					readFolderRecursive(showDetails, filePath, showAll, depth+1, maxDepth, prefix+"│  ", showEmojis)
+					readFolderRecursive(showDetails, filePath, showAll, depth+1, maxDepth, prefix+"│  ", showEmojis, showOnlyFiles, showOnlyFolders)
 				}
 			}
 		}
 	}
 }
 
-func ListFiles(showDetails bool, path string, showAll bool, showEmojis bool) {
+func ListFiles(showDetails bool, path string, showAll bool, showEmojis bool, showOnlyFiles bool, showOnlyFolders bool) {
 	files, err := os.ReadDir(path)
 	if err != nil {
 		fmt.Printf("Error al leer la carpeta: %s : %v\n", path, err)
@@ -90,14 +110,34 @@ func ListFiles(showDetails bool, path string, showAll bool, showEmojis bool) {
 		}
 
 		fileName := f.Name()
-		if f.IsDir() {
-			if showEmojis {
-				fileName = fmt.Sprintf("📁%s", fileName)
+		if showOnlyFolders{
+			if !f.IsDir(){
+				continue
 			} else {
-				fileName = fileName + "/"
+				if showEmojis {
+					fileName = fmt.Sprintf("📁%s", fileName)
+				} else {
+					fileName = fileName + "/"
+				}
 			}
-		} else if showEmojis {
-			fileName = fmt.Sprintf("📄%s", fileName)
+		} else if showOnlyFiles{
+			if f.IsDir(){
+				continue
+			} else {
+				if showEmojis {
+					fileName = fmt.Sprintf("📄%s", fileName)
+				}
+			}
+		} else {
+			if f.IsDir() {
+				if showEmojis {
+					fileName = fmt.Sprintf("📁%s", fileName)
+				} else {
+					fileName = fileName + "/"
+				}
+			} else if showEmojis {
+				fileName = fmt.Sprintf("📄%s", fileName)
+			}
 		}
 
 		if len(fileName) > maxNameLen {
@@ -119,14 +159,34 @@ func ListFiles(showDetails bool, path string, showAll bool, showEmojis bool) {
 
 		fileName := f.Name()
 		filePath := filepath.Join(path, fileName)
-		if f.IsDir() {
-			if showEmojis {
-				fileName = fmt.Sprintf("📁%s", fileName)
+		if showOnlyFolders{
+			if !f.IsDir(){
+				continue
 			} else {
-				fileName = fileName + "/"
+				if showEmojis {
+					fileName = fmt.Sprintf("📁%s", fileName)
+				} else {
+					fileName = fileName + "/"
+				}
 			}
-		} else if showEmojis {
-			fileName = fmt.Sprintf("📄%s", fileName)
+		} else if showOnlyFiles{
+			if f.IsDir(){
+				continue
+			} else {
+				if showEmojis {
+					fileName = fmt.Sprintf("📄%s", fileName)
+				}
+			}
+		} else {
+			if f.IsDir() {
+				if showEmojis {
+					fileName = fmt.Sprintf("📁%s", fileName)
+				} else {
+					fileName = fileName + "/"
+				}
+			} else if showEmojis {
+				fileName = fmt.Sprintf("📄%s", fileName)
+			}
 		}
 
 		if showDetails {
@@ -176,6 +236,8 @@ func main() {
 	showDetails := flag.Bool("details", false, "Show file details (permissions, creator, date).")
 	showTree := flag.Bool("tree", false, "Show files and folders in a tree view.")
 	showEmojis := flag.Bool("emoji", false, "Show emojis for files and folders.")
+	showOnlyFiles := flag.Bool("f", false, "Show only files.")
+	showOnlyFolders := flag.Bool("d", false, "Show only folders.")
 
 	flag.Parse()
 
@@ -189,8 +251,8 @@ func main() {
 		} else {
 			fmt.Printf("%s/\n", path)
 		}
-		ReadFolder(*showDetails, path, *showAll, *maxDepth, *showEmojis)
+		ReadFolder(*showDetails, path, *showAll, *maxDepth, *showEmojis, *showOnlyFiles, *showOnlyFolders)
 	} else {
-		ListFiles(*showDetails, path, *showAll, *showEmojis)
+		ListFiles(*showDetails, path, *showAll, *showEmojis, *showOnlyFiles, *showOnlyFolders)
 	}
 }
