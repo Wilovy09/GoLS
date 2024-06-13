@@ -1,12 +1,18 @@
-# GoLS
+# GoLS a common LS
 
-We deserve a better and faster LS command.
+We are a project that seeks to bring together different functionalities of different existing LS.
+
+- We are not the fastest
+- We are not the best
+- We're just different.
+
+We try to make all without external libreries.
 
 > [!NOTE]
-> PR is accepted to improve the code
+> PR is accepted to improve the code.
 
 > [!WARNING]
-> This project is under construction, it has visual errors more than anything else.
+> This project is under construction.
 
 ## Preview
 
@@ -27,7 +33,7 @@ Find the `gols` binary in your `$GOPATH/bin` directory and create an alias in yo
 
 ```bash
 # [ GoLS better ls ]
-alias ls='~/go/bin/GoLS'
+alias ls='~/go/bin/GoLS --tree --emoji'
 ```
 
 And you're done.
@@ -66,12 +72,19 @@ alias ls='~/GoLS'
 
 ## Flags
 
-| Flag     | Description                 | Values  | Default |
-|----------|-----------------------------|---------|-------- |
-| -a       | Show hidden files           | boolean | false   |
-| -depth   | How deep the search will be | int     | 0       |
-| -details | Show de file/dir details    | bollean | false   |
-| -tree    | Show the files in tree view | boolean | false   |
-| -emoji   | Show emojis in the view     | boolean | false   |
-| -d       | Show only directorys        | boolean | false   |
-| -f       | Show only files             | boolean | false    |
+| Flag     | Description                              | Values  | Default |
+|----------|------------------------------------------|---------|---------|
+| -a       | Show hidden files                        | boolean | false   |
+| -depth   | How deep the search will be              | int     | 0       |
+| -details | Show de file/dir details                 | bollean | false   |
+| -tree    | Show the files in tree view              | boolean | false   |
+| -emoji   | Show emojis in the view                  | boolean | false   |
+| -d       | Show only directorys                     | boolean | false   |
+| -f       | Show only files                          | boolean | false   |
+| -n       | Show how many files each folder contains | boolean | false   |
+
+## Features
+
+• [ ] Add a different flags to details (permissions, creator, date created)
+• [x] Add how many files each folder contains `📁Desktop [23]` can enabled with flag
+• [ ] Add colors
