@@ -85,6 +85,6 @@ alias ls='~/GoLS'
 
 ## Features
 
-• [ ] Add a different flags to details (permissions, creator, date created)
-• [x] Add how many files each folder contains `📁Desktop [23]` can enabled with flag
-• [ ] Add colors
+* [ ] Add a different flags to details (permissions, creator, date created)
+* [x] Add how many files each folder contains `📁Desktop [23]` can enabled with flag
+* [ ] Add colors
