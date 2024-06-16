@@ -82,7 +82,8 @@ alias ls='~/GoLS'
 | -d       | Show only directorys                     | boolean | false   |
 | -f       | Show only files                          | boolean | false   |
 | -n       | Show how many files each folder contains | boolean | false   |
-
+| -h       | Show the help message                    | boolean | false   |
+ 
 ## Features
 
 - [ ] Add a different flags to details (permissions, creator, date created)
