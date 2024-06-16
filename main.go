@@ -224,11 +224,17 @@ func main() {
 	showOnlyFiles := flag.Bool("f", false, "Show only files.")
 	showOnlyFolders := flag.Bool("d", false, "Show only folders.")
 	showCountFiles := flag.Bool("n", false, "Show count of files in folder names. ( [n]Desktop/ [n]📁Desktop )")
+	help := flag.Bool("h", false, "Show this help message")
 
 	flag.Parse()
 
 	if flag.NArg() > 0 {
 		path = flag.Arg(0)
+	}
+
+	if *help {
+		flag.Usage()
+		return
 	}
 
 	if *showTree {
