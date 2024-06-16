@@ -9,7 +9,7 @@ We are a project that seeks to bring together different functionalities of diffe
 We try to make all without external libreries.
 
 > [!NOTE]
-> PR is accepted to improve the code.
+> PRs are welcome to improve the code.
 
 > [!WARNING]
 > This project is under construction.
@@ -23,7 +23,7 @@ We try to make all without external libreries.
 > [!NOTE]
 > You need to have [Go](https://go.dev/dl/) installed on your machine.
 
-Its to simple to install, just open your terminal and run the following command.
+It's to simple to install, just open your terminal and run the following command.
 
 ```bash
 go install github.com/Wilovy09/GoLS@latest
@@ -40,9 +40,9 @@ And you're done.
 
 ## Download de binary
 
-In the [release](https://github.com/Wilovy09/GoLS/releases/tag/release) section you can find the binary file used to run GoLS.
+In [latest release](https://github.com/Wilovy09/GoLS/releases/latest) you can find the latest binary file used to run GoLS.
 
-Thins binary will be moved to yours root directory.
+This binary must be moved to a directory in `%PATH`.
 
 Create an alias in your `bashrc` or `.zshrc` file.
 
@@ -61,9 +61,9 @@ Clone the repository and compile the code.
 go build -o GoLS -buildvcs=false
 ```
 
-The `gols` binary will be moved to the root directory `/home/USER`.
+The `gols` binary must be moved to the directory `$HOME`.
 
-You need to create a `alias` in your `.bashrc` or `.zshrc` file.
+Create an `alias` in your `.bashrc` or `.zshrc` file.
 
 ```bash
 # [ gols better ls ]
@@ -73,7 +73,7 @@ alias ls='~/GoLS'
 ## Flags
 
 | Flag     | Description                              | Values  | Default |
-|----------|------------------------------------------|---------|---------|
+| -------- | ---------------------------------------- | ------- | ------- |
 | -a       | Show hidden files                        | boolean | false   |
 | -depth   | How deep the search will be              | int     | 0       |
 | -details | Show de file/dir details                 | bollean | false   |
@@ -85,6 +85,6 @@ alias ls='~/GoLS'
 
 ## Features
 
-* [ ] Add a different flags to details (permissions, creator, date created)
-* [x] Add how many files each folder contains `[n]Desktop/` `[n]📁Desktop` can enabled with flag
-* [ ] Add colors
+- [ ] Add a different flags to details (permissions, creator, date created)
+- [x] Add how many files each folder contains `[n]Desktop/` `[n]📁Desktop` can enabled with flag
+- [ ] Add colors
